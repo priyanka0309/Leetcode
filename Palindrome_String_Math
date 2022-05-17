@@ -1,0 +1,33 @@
+//Brute forece
+var isPalindrome = function(x) {
+    x=x.toString()
+    for(var i=0;i<x.length;i++){
+        if(x[i]!==x[x.length-1-i]){
+            return false
+        }
+    }
+    return true
+};
+
+//O(log(n) complexcity
+// EDGE CASES
+	// Negatives, and numbers with trailing zeroes that are not 0
+    if (x < 0 || (x % 10 === 0 && x != 0)) return false;
+	// Single digits are considered palindromes because they're read the same from the front and back.
+    if (x < 10) return true;
+	/* Key Steps
+	 * 1. Iterate through each digit and add it.
+	 * 2. Increase the previous digit by a magnitude.
+	 * 3. Divide the original by 10 to remove the trailing digit.
+	 * NOTE: In JS a division operator returns a decimal/float so it's necessary to round down to maintain integers.
+	 */
+    // 
+    let revertedNum = 0;
+    while (x >= 10 && x > revertedNum) {
+        revertedNum = revertedNum * 10 + (x % 10);
+        x = Math.floor(x / 10);
+    }
+	// Ensure odd digits are being accounted for. Since the while loop breaks when revertedNum is greater than x, we know that the extra digit is on revertedNum.
+    
+    return (x === revertedNumber || x===Math.floor(revertedNumber/10))
+};
